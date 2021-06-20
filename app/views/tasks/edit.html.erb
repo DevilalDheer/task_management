@@ -1,0 +1,29 @@
+<h1><%= "EDIT: " + @task.name %></h1>
+
+<%= form_with(model: @task, local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.datetime_select :deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, ['Backlog', 'Pending', 'Completed']%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<br><%= button_to "Delete Task", @task, :method => :delete, data: {confirm: 'Are you sure?',class: 'btn btn-danger'} %>
